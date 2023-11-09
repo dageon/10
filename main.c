@@ -2,17 +2,18 @@
 #include <string.h>
 
 int main(void) {
-	FILE* fp;
-	fp = fopen("sample.txt", "w");
+	FILE* fp = NULL;
+	char c;
 	
-	char str[100];
-	int i = 0;
+	fp = fopen("sample.txt", "r");
 	
-	for(i=0; i<3; i++){
-		printf("input a word:");
-		scanf("%s", str);
-		fprintf(fp, "%s\n", str);	
+	if (fp == NULL) {
+		printf("failed to open\n");
+		return 0;
 	}
+	
+	while( (c = fgetc(fp)) != EOF )
+		putchar(c);
 	
 	fclose(fp);
 	
