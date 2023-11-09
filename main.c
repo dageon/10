@@ -2,9 +2,19 @@
 #include <string.h>
 
 int main(void) {
-	char str[30] = "happy C programming";
+	FILE* fp;
+	fp = fopen("sample.txt", "w");
 	
-	printf("문자열 \"%s\"의 길이 : %i", str, strlen(str));
+	char str[100];
+	int i = 0;
+	
+	for(i=0; i<3; i++){
+		printf("input a word:");
+		scanf("%s", str);
+		fprintf(fp, "%s\n", str);	
+	}
+	
+	fclose(fp);
 	
 	return 0;
 }
